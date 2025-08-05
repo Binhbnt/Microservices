@@ -1,0 +1,32 @@
+-- Di dời dữ liệu cho UserService
+LOAD DATABASE
+    FROM sqlite:///data/UserService/Database/UserService.db
+    INTO postgresql://bnt@db:5432/user_db
+WITH drop indexes, reset sequences
+    -- Chỉ dẫn cho pgloader đổi cột isdeleted sang kiểu boolean
+    CAST column users.isdeleted to boolean;
+
+-- Di dời dữ liệu cho LeaveRequestService
+LOAD DATABASE
+    FROM sqlite:///data/LeaveRequestService/Database/LeaveRequests.db
+    INTO postgresql://bnt@db:5432/leaverequest_db
+WITH drop indexes, reset sequences
+    -- Chỉ dẫn cho pgloader đổi 2 cột sang kiểu boolean
+    CAST column leaverequests.daguin8n to boolean,
+         column leaverequests.isdeleted to boolean;
+
+-- Di dời dữ liệu cho AuditLogService
+LOAD DATABASE
+    FROM sqlite:///data/AuditLogsService/Database/AuditLog.db
+    INTO postgresql://bnt@db:5432/auditlog_db
+WITH drop indexes, reset sequences
+    -- Chỉ dẫn cho pgloader đổi cột issuccess sang kiểu boolean
+    CAST column auditlogs.issuccess to boolean;
+
+-- Di dời dữ liệu cho NotificationsService
+LOAD DATABASE
+    FROM sqlite:///data/NotificationsService/Database/Notification.db
+    INTO postgresql://bnt@db:5432/appnotification_db
+WITH drop indexes, reset sequences
+    -- Chỉ dẫn cho pgloader đổi cột isread sang kiểu boolean
+    CAST column appnotifications.isread to boolean;

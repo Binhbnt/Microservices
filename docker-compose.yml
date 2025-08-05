@@ -1,0 +1,202 @@
+networks:
+  microservice-net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
+  mongo_data:      ## <-- THÊM VOLUME MỚI CHO MONGO
+    driver: local
+
+services:
+  #--------------------------------
+  # CSDL PostgreSQL
+  #--------------------------------
+  db:
+    image: postgres:17-alpine
+    container_name: postgres_db_server
+    networks:
+      - microservice-net
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_HOST_AUTH_METHOD: md5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5175:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  #--------------------------------
+  # API Gateway
+  #--------------------------------
+  api-gateway:
+    container_name: api-gateway
+    build:
+      context: ./ApiGateway
+      dockerfile: Dockerfile
+    ports:
+      - "5081:8080"
+    networks:
+      - microservice-net
+    restart: unless-stopped
+    depends_on:
+      mongodb-service:
+        condition: service_started
+      user-service:
+        condition: service_healthy # Chờ service sẵn sàng
+      leave-request-service:
+        condition: service_healthy # Chờ service sẵn sàng
+      notifications-service:
+        condition: service_healthy # Chờ service sẵn sàng
+      audit-logs-service:
+        condition: service_healthy # Chờ service sẵn sàng
+
+  #--------------------------------
+  # Các Microservices .NET
+  #--------------------------------
+  audit-logs-service:
+    container_name: audit-logs-service
+    build:
+      context: ./AuditLogsService
+      dockerfile: Dockerfile
+    ports:
+      - "5082:8080"
+    networks:
+      - microservice-net
+    restart: unless-stopped
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=${DB_SERVER};Port=${DB_PORT};Database=auditlog_db;User Id=${DB_USER};Password=${DB_PASSWORD};
+    depends_on:
+      pgloader-migrate:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  leave-request-service:
+    container_name: leave-request-service
+    build:
+      context: ./LeaveRequestService
+      dockerfile: Dockerfile
+    ports:
+      - "5083:8080"
+    networks:
+      - microservice-net
+    restart: unless-stopped
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=${DB_SERVER};Port=${DB_PORT};Database=leaverequest_db;User Id=${DB_USER};Password=${DB_PASSWORD};
+    depends_on:
+      pgloader-migrate:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  notifications-service:
+    container_name: notifications-service
+    build:
+      context: ./NotificationsService
+      dockerfile: Dockerfile
+    ports:
+      - "5084:8080"
+    networks:
+      - microservice-net
+    restart: unless-stopped
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=${DB_SERVER};Port=${DB_PORT};Database=appnotification_db;User Id=${DB_USER};Password=${DB_PASSWORD};
+    depends_on:
+      pgloader-migrate:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  user-service:
+    container_name: user-service
+    build:
+      context: ./UserService
+      dockerfile: Dockerfile
+    ports:
+      - "5080:8080"
+    networks:
+      - microservice-net
+    restart: unless-stopped
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=${DB_SERVER};Port=${DB_PORT};Database=user_db;User Id=${DB_USER};Password=${DB_PASSWORD};
+    depends_on:
+      pgloader-migrate:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  #--------------------------------
+  # Frontend & CSDL của Gateway
+  #--------------------------------
+  user-dashboard:
+    container_name: user-dashboard-frontend
+    build:
+      context: ./UserDashboard
+      dockerfile: Dockerfile
+      args:
+        VITE_API_GATEWAY_URL: http://10.10.10.130:5081
+    ports:
+      - "5173:80"
+    networks:
+      - microservice-net
+    restart: unless-stopped
+
+  mongodb-service:
+    image: mongo:latest
+    container_name: mongodb-service
+    networks:
+      - microservice-net
+    restart: unless-stopped
+    ports:
+      - "5176:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  #--------------------------------
+  # Service tạm thời để di dời dữ liệu
+  #--------------------------------
+  pgloader-migrate:
+    image: dimitri/pgloader:latest
+    container_name: pgloader_migrate_task
+    networks:
+      - microservice-net
+    volumes:
+      - .:/data
+    environment:
+      PGPASSWORD: ${DB_PASSWORD}
+    command: ["pgloader", "/data/migrate.load"]
+    depends_on:
+      db:
+        condition: service_healthy

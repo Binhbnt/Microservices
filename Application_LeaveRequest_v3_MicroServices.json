@@ -1,0 +1,131 @@
+{
+  "name": "Application",
+  "nodes": [
+    {
+      "parameters": {
+        "sendTo": "iot@baoz.vn",
+        "subject": "Yêu cầu thu hồi đơn nghỉ phép",
+        "message": "=<div style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #333;\">\n  <h3 style=\"color: #ffc107;\">Yêu Cầu Thu Hồi Đơn Nghỉ Phép</h3>\n\n  <p>\n    <strong>{{ $json.body.adminName }}</strong> đã yêu cầu thu hồi lại đơn nghỉ phép có mã số \n    <strong>#{{ $json.body.leaveRequestId }}</strong>.\n  </p>\n\n  <p>Hành động này sẽ đưa đơn về trạng thái <strong>\"Chờ duyệt\"</strong> để có thể chỉnh sửa lại.</p>\n\n  <p>Vui lòng nhấn vào nút bên dưới để xác nhận việc thu hồi đơn:</p>\n\n  <div style=\"margin-top: 25px; text-align: center;\">\n    <a href=\"{{ $json.body.processRevocationLink }}\"\n       style=\"display: inline-block; padding: 12px 24px; background-color: #ffc107; color: black; text-decoration: none; border-radius: 5px; font-weight: bold;\">\n      Xác Nhận Thu Hồi\n    </a>\n  </div>\n</div>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -660,
+        400
+      ],
+      "id": "62843a6e-2934-4c9e-b905-b7983cd4eb63",
+      "name": "Email Revoke Confirmation",
+      "webhookId": "1a781767-a797-4ebe-a93a-81a12b59475c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "P8c2Gzph7WtgeyH5",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "requestRevocation",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -880,
+        400
+      ],
+      "id": "9a4b94cf-82d5-4b32-8ea0-77974bfdcd94",
+      "name": "Email Revoke Webhook",
+      "webhookId": "4fb3f1c5-94d1-41b5-a7c0-6605725482ac"
+    },
+    {
+      "parameters": {
+        "sendTo": "iot@baoz.vn",
+        "subject": "Đơn xin nghỉ phép",
+        "message": "=<div style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #333;\">\n  <h3 style=\"color: #0056b3;\">Yêu Cầu Duyệt Đơn Xin Nghỉ Phép</h3>\n  <p>Nhân viên <strong>{{ $json.body.employeeName }}</strong> đã gửi một yêu cầu xin nghỉ phép với các thông tin sau:</p>\n\n  <table style=\"width: 100%; border-collapse: collapse; margin: 20px 0;\">\n    <tr>\n      <td style=\"padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9; width: 120px;\"><strong>Loại phép:</strong></td>\n      <td style=\"padding: 8px; border: 1px solid #ddd;\">{{ $json.body.leaveType }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9;\"><strong>Từ ngày:</strong></td>\n      <td style=\"padding: 8px; border: 1px solid #ddd;\">{{ $json.body.fromDate }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9;\"><strong>Đến ngày:</strong></td>\n      <td style=\"padding: 8px; border: 1px solid #ddd;\">{{ $json.body.toDate }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9;\"><strong>Từ giờ:</strong></td>\n      <td style=\"padding: 8px; border: 1px solid #ddd;\">{{ $json.body.fromTime }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9;\"><strong>Đến giờ:</strong></td>\n      <td style=\"padding: 8px; border: 1px solid #ddd;\">{{ $json.body.toTime }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9;\"><strong>Lý do:</strong></td>\n      <td style=\"padding: 8px; border: 1px solid #ddd;\">{{ $json.body.reason }}</td>\n    </tr>\n  </table>\n\n  <p>Vui lòng xem xét và xử lý đơn:</p>\n\n  <div style=\"margin-top: 25px; text-align: center;\">\n    <a href=\"{{ $json.body.approveLink }}\" style=\"display: inline-block; padding: 12px 24px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px; margin-right: 15px; font-weight: bold;\">\n      Duyệt Đơn\n    </a>\n    <a href=\"{{ $json.body.rejectLink }}\" style=\"display: inline-block; padding: 12px 24px; background-color: #dc3545; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;\">\n      Từ Chối\n    </a>\n  </div>\n</div>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -660,
+        140
+      ],
+      "id": "11cc55e6-7125-4594-bd86-12061305b0a7",
+      "name": "Email Approval Request",
+      "webhookId": "1a781767-a797-4ebe-a93a-81a12b59475c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "P8c2Gzph7WtgeyH5",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "sendApproval",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -880,
+        140
+      ],
+      "id": "da1af937-9dbe-4909-a484-f5c6a416baaf",
+      "name": "Get Send Approval Webhook",
+      "webhookId": "4fb3f1c5-94d1-41b5-a7c0-6605725482ac"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Email Revoke Webhook": {
+      "main": [
+        [
+          {
+            "node": "Email Revoke Confirmation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Approval Request": {
+      "main": [
+        []
+      ]
+    },
+    "Get Send Approval Webhook": {
+      "main": [
+        [
+          {
+            "node": "Email Approval Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "3ff37517-b55b-49f7-ad59-4a8052f22b5c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "33b4dfdd72984394e10a4ce8a038f9c0ea654ccbfddb624fe7aae35ae3f75516"
+  },
+  "id": "4IeOdEFIOctb756Y",
+  "tags": [
+    {
+      "createdAt": "2025-06-14T06:41:55.125Z",
+      "updatedAt": "2025-06-14T06:41:55.125Z",
+      "id": "BsWaDoV7kBAoQpU5",
+      "name": "DonXinNghiPhep"
+    }
+  ]
+}
