@@ -27,3 +27,9 @@ UserDashboard/build/
 
 # Bỏ qua thư mục chứa data của MongoDB
 ApiGateway/Database/
+
+# Bỏ qua thư mục images chứa ảnh
+/installer/
+
+# Bỏ qua tất cả các file .deb
+*.deb
