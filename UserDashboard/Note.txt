@@ -1,0 +1,20 @@
+UserDashboard/
+├── node_modules/        <-- Chứa các thư viện Node.js và React (đừng chỉnh sửa ở đây)
+├── public/
+│   └── vite.svg         <-- Các tài nguyên tĩnh (images, v.v.)
+├── src/                 <-- Đây là nơi bạn sẽ viết hầu hết code của mình
+│   ├── assets/
+│   │   └── react.svg
+│   ├── App.css          <-- CSS cho component App
+│   ├── App.jsx          <-- Component chính của ứng dụng
+│   ├── index.css        <-- CSS toàn cục
+│   └── main.jsx         <-- Điểm khởi đầu của ứng dụng React (render App.jsx)
+├── .eslintrc.cjs        <-- Cấu hình ESLint (kiểm tra lỗi code)
+├── .gitignore           <-- Các file/thư mục bị bỏ qua khi commit lên Git
+├── index.html           <-- File HTML chính mà ứng dụng React được nhúng vào
+├── package.json         <-- Định nghĩa dự án, scripts, dependencies
+├── package-lock.json    <-- Chi tiết các dependency đã cài đặt
+├── postcss.config.js    <-- Cấu hình PostCSS (nếu dùng)
+├── README.md            <-- File README của dự án
+├── vite.config.js       <-- Cấu hình cho Vite
+└── jsconfig.json        <-- Cấu hình cho JavaScript (nếu dùng TypeScript sẽ là tsconfig.json)

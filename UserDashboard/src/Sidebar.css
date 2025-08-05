@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, #16222A 0%, #3A6073 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.sidebar.collapsed {
+  width: 80px; /* Tăng chiều rộng khi thu gọn một chút */
+}
+
+/* Header & Nút Bấm */
+.sidebar-header {
+  padding: 20px;
+  text-align: center;
+  position: relative; /* Quan trọng để định vị nút bấm */
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Style riêng cho ngày và giờ để đẹp hơn */
+.sidebar-header h3 { /* Dòng hiển thị ngày */
+  font-weight: 400; /* Chữ mảnh hơn */
+  font-size: 1rem;
+  margin: 0;
+}
+.sidebar-header h5 { /* Dòng hiển thị giờ */
+  font-weight: 700; /* Chữ đậm hơn */
+  font-size: 1.75rem;
+  letter-spacing: 2px;
+  margin-top: 5px;
+  color: #f7b733; /* Thêm màu nhấn màu vàng cam */
+}
+
+.sidebar.collapsed .sidebar-header {
+  padding: 15px 10px;
+}
+
+.collapse-btn {
+  /* Loại bỏ position: absolute, dùng flexbox để căn chỉnh */
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  position: absolute; /* Định vị lại so với header */
+  top: 50%;
+  right: -40px; /* Đẩy nút ra ngoài sidebar */
+  transform: translateY(-50%);
+  background-color: #004a99;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.sidebar.collapsed .collapse-btn {
+  right: -45px; /* Điều chỉnh lại vị trí khi thu gọn */
+}
+
+
+/* Menu */
+.sidebar-menu {
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 25px; /* Tăng padding */
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.2s;
+  white-space: nowrap; /* Ngăn chữ xuống dòng */
+}
+
+.menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-item.active {
+  background-color: #0055a4;
+  font-weight: bold;
+}
+
+.menu-item i {
+  font-size: 1.1rem;
+  margin-right: 20px;
+  width: 25px; /* Tăng chiều rộng icon */
+  text-align: center;
+}
+
+.sidebar.collapsed .menu-item {
+  justify-content: center;
+  padding: 15px 10px;
+}
+
+.sidebar.collapsed .menu-item i {
+  margin-right: 0;
+}
+
+.sidebar.collapsed .menu-text {
+  display: none;
+}
+
+.digital-clock h3 {
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0;
+}
+.digital-clock h5 {
+  font-weight: 700;
+  font-size: 1.75rem;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+
+/* Style cho đồng hồ retro */
+/* Bạn cần import font này, ví dụ từ Google Fonts: <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"> */
+.digital-clock.VT323 h3,
+.digital-clock.VT323 h5 {
+  font-family: 'VT323', monospace;
+  color: #39FF14; /* Màu xanh neon */
+  text-shadow: 0 0 5px #39FF14;
+  font-size: 1.5rem;
+}
+.skin-save-notice {
+  position: absolute;
+  bottom: 15px; /* Đẩy lên cao hơn một chút */
+  left: 50%;
+  
+  /* Hiệu ứng trượt nhẹ lên và mờ dần */
+  animation: fadeInOut 2.5s ease-in-out forwards;
+
+  /* Style chính */
+  background-color: rgba(30, 30, 30, 0.7); /* Nền tối và trong hơn */
+  backdrop-filter: blur(8px); /* Hiệu ứng kính mờ */
+  -webkit-backdrop-filter: blur(8px);
+  color: white;
+  padding: 8px 16px; /* Tăng padding cho thoáng hơn */
+  border-radius: 50px; /* Bo tròn thành hình viên thuốc */
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Thêm viền mờ */
+}
+
+/* Sửa lại animation để có hiệu ứng trượt lên */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  20%, 80% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+}

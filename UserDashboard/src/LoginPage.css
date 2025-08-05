@@ -1,0 +1,107 @@
+/* D:\IT\Application\Microservices\UserDashboard\src\LoginPage.css */
+.login-page-container {
+	/* Đảm bảo background full màn hình */
+	background-image: url('/src/img/background-login.webp'); /* << NHỚ THAY ĐỔI ĐƯỜNG DẪN NÀY */
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	
+	position: fixed; /* để cover toàn bộ màn hình */
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.login-box {
+	/* THAY ĐỔI: Giảm độ mờ của nền trắng xuống 0.75 */
+  background: rgba(255, 255, 255, 0.5);
+  
+  /* THÊM MỚI: Hiệu ứng làm mờ kính (frosted glass) */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Hỗ trợ trình duyệt Safari */
+
+  /* THÊM MỚI: Thêm đường viền trắng mờ để nổi bật hơn */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  /* Các thuộc tính còn lại giữ nguyên */
+  padding: 2.5rem; 
+  border-radius: 12px; /* Tăng bo góc một chút cho mềm mại */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+}
+
+.login-title {
+	/* Tinh chỉnh lại tiêu đề */
+	font-size: 1.75rem;
+	font-weight: 700;
+	color: #333;
+	margin-bottom: 2rem; /* Khoảng cách từ tiêu đề đến form */
+	text-align: center;
+}
+
+.form-group {
+	/* Giảm khoảng cách giữa các trường input */
+	margin-bottom: 1.25rem;
+	text-align: left;
+}
+
+.form-group label {
+	display: block;
+	font-size: 0.875rem; /* Chữ nhỏ hơn một chút */
+	color: #555;
+	font-weight: 600;
+	margin-bottom: 0.5rem; /* Khoảng cách từ label đến input */
+}
+
+.form-group input {
+	width: 100%;
+	padding: 0.75rem 1rem;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 1rem;
+	box-sizing: border-box;
+	transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+	outline: none;
+	border-color: #007bff; /* Highlight màu xanh khi focus */
+}
+
+.error-text {
+	color: #dc3545; /* Màu đỏ cho lỗi */
+	font-size: 0.875rem;
+	margin-top: -0.5rem;
+	margin-bottom: 1rem;
+	text-align: center;
+}
+
+.login-button {
+	width: 100%;
+	padding: 0.85rem;
+	border: none;
+	border-radius: 5px;
+	background-color: #0d6efd; /* Màu xanh dương của Bootstrap */
+	color: white;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	margin-top: 1rem; /* Khoảng cách từ trường cuối cùng đến nút */
+}
+
+.login-button:hover {
+	background-color: #0b5ed7;
+}

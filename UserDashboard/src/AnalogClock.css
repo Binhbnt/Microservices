@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
+
+.analog-clock-wrapper {
+  /* Thu nhỏ đồng hồ còn 60% và điều chỉnh vị trí cho cân đối */
+  transform: scale(0.6);
+  margin-top: -50px;
+  margin-bottom: -50px;
+}
+
+.clock {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
+  font-size: 24px;
+  color: #444;
+  text-align: center;
+  background: #f0f0f0; /* Đổi nền cho sáng hơn */
+  margin: 0 auto;
+}
+
+.clock::after {
+  background: #555;
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid #fff;
+}
+
+.hour_hand, .min_hand, .sec_hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: bottom;
+  border-radius: 4px;
+  /* Dịch sang trái 50% chiều rộng của chính nó để tâm xoay chính xác */
+  transform: translateX(-50%); 
+}
+
+.hour_hand {
+  width: 6px;
+  height: 60px;
+  background: #222;
+}
+
+.min_hand {
+  width: 4px;
+  height: 80px;
+  background: #444;
+}
+
+.sec_hand {
+  width: 2px;
+  height: 110px;
+  background: red;
+}
+
+/* Căn chỉnh lại vị trí các số */
+.clock span { position: absolute; font-family: "Source Sans Pro", sans-serif; font-weight: 700; }
+.twelve { top: 10px; left: 50%; transform: translateX(-50%); }
+.one { top: 10%; right: 26%; }
+.eleven { top: 10%; left: 26%; }
+.two { top: 26%; right: 10%; }
+.ten { top: 26%; left: 10%; }
+.three { top: 50%; right: 10px; transform: translateY(-50%); }
+.nine { top: 50%; left: 10px; transform: translateY(-50%); }
+.four { bottom: 26%; right: 10%; }
+.eight { bottom: 26%; left: 10%; }
+.five { bottom: 10%; right: 26%; }
+.seven { bottom: 10%; left: 26%; }
+.six { bottom: 10px; left: 50%; transform: translateX(-50%); }

@@ -1,0 +1,718 @@
+/* D:\IT\Application\Microservices\UserDashboard\src\App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+:root {
+  /* --sidebar-width: 100px;         /* ✅ chuẩn chiều rộng thật 
+  --sidebar-collapsed-width: 65px; */
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 80px;
+}
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+body {
+  /* family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #eef2f5;
+  color: #333;
+}
+
+.app-container {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 1300px;
+  /* Tăng chiều rộng tối đa */
+  margin: 20px auto;
+  overflow: auto;
+}
+
+.action-buttons {
+  display: flex;
+  /* Sử dụng Flexbox để xếp ngang hàng */
+  gap: 5px;
+  /* Khoảng cách giữa các nút */
+  justify-content: center;
+  /* Căn giữa các nút trong ô */
+  align-items: center;
+}
+
+.page-title {
+  color: #34495e;
+  margin-bottom: 25px;
+  font-size: 2em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+/* Các nút điều khiển */
+.control-panel {
+  display: flex;
+  gap: 15px;
+  /* Tăng khoảng cách giữa các nút */
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  /* Cho phép xuống dòng trên màn hình nhỏ */
+}
+
+/* Kiểu nút chung */
+.btn {
+  padding: 10px 20px;
+  /* Tăng kích thước padding */
+  border: none;
+  border-radius: 5px;
+  /* Góc bo tròn hơn */
+  cursor: pointer;
+  font-weight: 600;
+  /* Đậm hơn */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Khoảng cách giữa icon và chữ */
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  /* Hiệu ứng nhấc lên nhẹ khi hover */
+}
+
+.btn-primary {
+  background-color: #007bff;
+  /* Màu xanh dương */
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  /* Màu xám */
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  /* Màu xanh nhạt */
+  color: white;
+}
+
+.btn-info:hover {
+  background-color: #117a8b;
+}
+
+.btn-success {
+  background-color: #28a745;
+  /* Màu xanh lá cây */
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #1e7e34;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  /* Màu vàng */
+  color: #212529;
+  /* Chữ đen */
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  /* Màu đỏ */
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #bd2130;
+}
+
+.btn-sm {
+  padding: 6px 10px;
+  /* Giảm padding một chút */
+  font-size: 0.8em;
+  white-space: nowrap;
+  /* Đảm bảo chữ không xuống dòng */
+}
+
+.btn .fas {
+  margin-right: 5px;
+  /* Khoảng cách giữa icon và chữ */
+}
+
+/* Phần tìm kiếm và lọc */
+.search-filter-panel {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.search-input,
+.role-select {
+  padding: 10px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  flex-grow: 1;
+  min-width: 200px;
+  /* Đảm bảo đủ rộng */
+  font-size: 1em;
+}
+
+.role-select {
+  background-color: white;
+  /* Đảm bảo nền trắng */
+  cursor: pointer;
+}
+
+/* Bảng danh sách người dùng */
+.table-responsive {
+  overflow: visible !important;
+  position: relative;
+  overflow-x: auto;
+  /* width: 100%;  */
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: visible;
+  position: relative;
+  table-layout: fixed;
+  /* font-size: 2rem; */
+}
+
+/* .table-wrapper-custom {
+  width: 100%;
+  overflow-x: auto;
+} */
+
+.user-table th,
+.user-table td {
+  border: 1px solid #dee2e6;
+  padding: 12px 15px;
+  /* text-align: left; */
+  vertical-align: middle;
+  overflow: visible; /* BẮT BUỘC: Cho phép hiển thị tooltip */
+  position: relative; /* Để tooltip định vị chính xác */
+  white-space: nowrap;
+  text-align: center;
+}
+
+
+.user-table th {
+  background-color: #f1f3f6;
+  color: #495057;
+  font-weight: 700; /* Đậm hơn */
+  position: sticky; /* Giữ header khi cuộn */
+  top: 0;
+  z-index: 1; /* Đảm bảo header nằm trên nội dung cuộn */
+}
+
+.user-table tbody tr:nth-child(even) {
+  background-color: #f7f9fc;
+}
+
+.user-table tbody tr:hover {
+  background-color: #f0f19c; /* Hiệu ứng hover cho hàng */
+}
+
+/* Style cho cột "Phép Được Hưởng" */
+.license-points {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #e6ffed;
+  /* Nền xanh lá nhạt */
+  color: #007f3f;
+  /* Chữ xanh lá đậm */
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .control-panel,
+  .search-filter-panel {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    /* Nút đầy đủ chiều rộng */
+    justify-content: center;
+  }
+
+  .search-input,
+  .role-select {
+    width: 100%;
+  }
+
+  .user-table th,
+  .user-table td {
+    padding: 8px 10px;
+    /* Giảm padding trên màn hình nhỏ */
+    font-size: 0.9em;
+  }
+}
+
+/* CSS cho trạng thái tải và lỗi */
+.loading-message,
+.error-message {
+  text-align: center;
+  padding: 30px;
+  font-size: 1.2em;
+  color: #555;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin: 50px auto;
+  max-width: 600px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.error-message {
+  color: #dc3545;
+  /* Màu đỏ cho lỗi */
+  background-color: #ffebe9;
+  /* Nền đỏ nhạt */
+}
+
+/* ===================== MODAL STYLES ===================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Nền mờ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  /* Đảm bảo modal nằm trên cùng */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 500px;
+  /* Chiều rộng tối đa của modal */
+  position: relative;
+  animation: fadeIn 0.3s ease-out;
+  /* Hiệu ứng hiện ra */
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.8em;
+  color: #34495e;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  color: #6c757d;
+  transition: color 0.2s ease;
+}
+
+.close-button:hover {
+  color: #dc3545;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group select {
+  width: calc(100% - 24px);
+  /* Trừ padding */
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+  /* Đảm bảo padding và border không làm tăng width */
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.modal-footer {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.error-text {
+  color: #dc3545;
+  font-size: 0.85em;
+  margin-top: 5px;
+}
+
+/* Animation cho modal */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===================== LOGIN PAGE STYLES ===================== */
+.login-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* Chiều cao tối thiểu là toàn bộ viewport */
+  background-color: #f0f2f5;
+}
+
+.login-box {
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  /* Chiều rộng tối đa của hộp login */
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 30px;
+  color: #34495e;
+  font-size: 2.2em;
+}
+
+.login-box .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.login-box label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: calc(100% - 24px);
+  /* Trừ padding */
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+  /* Đảm bảo padding và border không làm tăng width */
+}
+
+.login-box input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.login-box .login-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.login-box .login-button:hover {
+  background-color: #0056b3;
+}
+
+.login-box .error-text {
+  color: #dc3545;
+  font-size: 0.9em;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/*Toast Message*/
+.custom-toast {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+  min-width: 280px;
+  max-width: 90vw;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Kiểu riêng cho success và error */
+.custom-toast.success {
+  background-color: #28a745;
+}
+
+.custom-toast.error {
+  background-color: #dc3545;
+}
+
+.custom-toast.info {
+  background-color: #0dcaf0; /* Màu xanh ngọc của Bootstrap */
+  /* Thêm các style khác nếu cần */
+}
+
+/* Icon */
+.custom-toast i {
+  font-size: 18px;
+}
+
+/* Animation xuất hiện */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Lớp nền mờ bao phủ toàn màn hình */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  /* 100% chiều rộng viewport */
+  height: 100vh;
+  /* 100% chiều cao viewport */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Màu đen mờ */
+  z-index: 1050;
+  /* Nằm trên các phần tử khác */
+
+  /* Các thuộc tính quan trọng nhất để căn giữa */
+  display: flex;
+  justify-content: center;
+  /* Căn giữa theo chiều ngang */
+  align-items: center;
+  /* Căn giữa theo chiều dọc */
+}
+
+/* Khung nội dung trắng của modal */
+.modal-content {
+  background-color: white;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 500px;
+  /* Độ rộng tối đa của modal */
+  text-align: left;
+  /* Căn chữ về bên trái mặc định */
+}
+
+.modal-header {
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-body {
+  margin-bottom: 1.5rem;
+}
+
+.modal-footer {
+  border-top: 1px solid #dee2e6;
+  padding-top: 1rem;
+  text-align: right;
+  /* Căn các nút về bên phải */
+}
+
+/* Thêm khoảng cách cho nút trong footer */
+.modal-footer button+button {
+  margin-left: 0.5rem;
+}
+
+/* Fix table error not automatically expanding columns  */
+/* Wrapper chung cho scroll ngang */
+.responsive-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Bảng chuẩn dùng chung */
+.app-table {
+  width: max-content;
+  min-width: 100%;
+  table-layout: auto !important;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: visible;
+  position: relative;
+}
+
+/* Cell chung */
+.app-table th,
+.app-table td {
+  white-space: nowrap;
+  padding: 12px 16px;
+  border: 1px solid #dee2e6;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Header sticky */
+.app-table th {
+  background-color: #f1f3f6;
+  color: #495057;
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Hover */
+.app-table tbody tr:hover {
+  background-color: #f0f19c;
+}
+
+/* Zebra rows */
+.app-table tbody tr:nth-child(even) {
+  background-color: #f7f9fc;
+}
+/* Class bao bọc toàn bộ trang để áp dụng style riêng */
+.dashboard-page {
+  background-color: #f4f7f6; /* Một màu nền nhẹ nhàng thay vì trắng trơn */
+}
+
+/* Tiêu đề cho các khu vực, tạo sự phân cấp rõ ràng */
+.dashboard-section-title {
+  font-weight: 300; /* Chữ mảnh hơn, tinh tế hơn */
+  color: #495057; /* Màu xám đậm */
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Style chung cho TẤT CẢ các thẻ trên trang Dashboard */
+.dashboard-page .card {
+  border: none; /* Bỏ viền mặc định */
+  border-radius: 0.75rem; /* Bo góc nhiều hơn */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* HIỆU ỨNG "NHẢY LÊN" KHI RÊ CHUỘT */
+.dashboard-page .card:hover {
+  transform: translateY(-7px); /* Di chuyển thẻ lên trên 7px */
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1) !important; /* Đổ bóng rõ hơn */
+}
+
+/* Style riêng cho thẻ thống kê phép năm (giống ảnh bạn gửi) */
+.leave-balance-card .icon-container {
+  font-size: 2.75rem;
+  opacity: 0.7;
+}
+
+.leave-balance-card .value-display {
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+
+/* Tùy chỉnh màu gradient cho thẻ phép năm */
+.bg-gradient-primary { background-image: linear-gradient(45deg, #0d6efd, #4da3ff); }
+.bg-gradient-warning { background-image: linear-gradient(45deg, #ffc107, #ffd761); color: #212529 !important; }
+.bg-gradient-success { background-image: linear-gradient(45deg, #198754, #41c364); }
+
+/* Style cho các mục trong danh sách đơn để đẹp hơn */
+.request-list-item:hover {
+  background-color: #e9ecef; /* Thêm hiệu ứng đổi màu nền khi rê chuột */
+}
+
