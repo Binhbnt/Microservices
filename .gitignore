@@ -1,0 +1,29 @@
+# File môi trường chứa mật khẩu và thông tin nhạy cảm
+.env
+
+# File đóng gói các image, rất lớn, không nên đưa lên Git
+all_images.tar
+
+# Bỏ qua thư mục build của .NET
+[Bb]in/
+[Oo]bj/
+[Pp]ublish/
+
+# Bỏ qua thư mục build của frontend (React/Vite)
+UserDashboard/dist/
+UserDashboard/build/
+
+# Thư mục node_modules của dự án React
+**/node_modules
+
+# Các file do Rider/VS Code/Visual Studio tạo ra
+.idea/
+.vs/
+*.suo
+*.user
+
+# Log files
+*.log
+
+# Bỏ qua thư mục chứa data của MongoDB
+ApiGateway/Database/
