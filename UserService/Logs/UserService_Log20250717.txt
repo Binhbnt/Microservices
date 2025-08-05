@@ -1,0 +1,26 @@
+2025-07-17 08:45:33.330 +07:00 [INF] UserService is starting up...
+2025-07-17 10:14:38.666 +07:00 [INF] Login attempt for user: NV0001
+2025-07-17 10:14:39.097 +07:00 [INF] Login successful for user: NV0001
+2025-07-17 10:16:57.577 +07:00 [INF] Login attempt for user: NV0001
+2025-07-17 10:16:57.824 +07:00 [INF] Login successful for user: NV0001
+2025-07-17 10:28:20.092 +07:00 [INF] Login attempt for user: NV0002
+2025-07-17 10:28:20.094 +07:00 [WRN] Login failed: Invalid credentials for user: NV0002
+2025-07-17 10:28:22.667 +07:00 [INF] Login attempt for user: NV0002
+2025-07-17 10:28:22.669 +07:00 [WRN] Login failed: Invalid credentials for user: NV0002
+2025-07-17 10:28:26.411 +07:00 [INF] Login attempt for user: NV0003
+2025-07-17 10:28:26.604 +07:00 [INF] Login successful for user: NV0003
+2025-07-17 11:38:49.556 +07:00 [INF] UserService is starting up...
+2025-07-17 12:22:02.903 +07:00 [INF] UserService is starting up...
+2025-07-17 13:31:16.561 +07:00 [INF] UserService is starting up...
+2025-07-17 13:35:48.703 +07:00 [INF] UserService is starting up...
+2025-07-17 14:41:10.967 +07:00 [INF] Login attempt for user: NV0001
+2025-07-17 14:41:11.303 +07:00 [INF] Login successful for user: NV0001
+2025-07-17 14:46:42.483 +07:00 [INF] UserService is starting up...
+2025-07-17 14:46:48.735 +07:00 [INF] Login attempt for user: NV0003
+2025-07-17 14:46:48.996 +07:00 [INF] Login successful for user: NV0003
+2025-07-17 14:53:27.746 +07:00 [INF] UserService is starting up...
+2025-07-17 14:54:39.810 +07:00 [INF] UserService is starting up...
+2025-07-17 15:04:02.720 +07:00 [INF] Login attempt for user: NV0001
+2025-07-17 15:04:02.997 +07:00 [INF] Login successful for user: NV0001
+2025-07-17 17:30:05.453 +07:00 [INF] Login attempt for user: NV0006
+2025-07-17 17:30:05.577 +07:00 [INF] Login successful for user: NV0006

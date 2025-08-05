@@ -1,0 +1,9 @@
+2025-07-18 08:55:13.718 +07:00 [INF] UserService is starting up...
+2025-07-18 08:55:51.309 +07:00 [INF] Login attempt for user: NV0001
+2025-07-18 08:55:52.098 +07:00 [INF] Login successful for user: NV0001
+2025-07-18 08:56:14.162 +07:00 [INF] Login attempt for user: NV0003
+2025-07-18 08:56:14.471 +07:00 [INF] Login successful for user: NV0003
+2025-07-18 13:44:05.632 +07:00 [INF] Login attempt for user: NV0001
+2025-07-18 13:44:05.761 +07:00 [INF] Login successful for user: NV0001
+2025-07-18 15:15:42.350 +07:00 [INF] Login attempt for user: NV0003
+2025-07-18 15:15:42.473 +07:00 [INF] Login successful for user: NV0003
