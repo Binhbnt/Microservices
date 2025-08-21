@@ -1,0 +1,290 @@
+{
+  "name": "Application",
+  "nodes": [
+    {
+      "parameters": {
+        "sendTo": "iot@baoz.vn",
+        "subject": "Yêu cầu thu hồi đơn nghỉ phép",
+        "message": "=<div style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #333;\">\n  <h3 style=\"color: #ffc107;\">Yêu Cầu Thu Hồi Đơn Nghỉ Phép</h3>\n\n  <p>\n    <strong>{{ $json.body.adminName }}</strong> đã yêu cầu thu hồi lại đơn nghỉ phép có mã số \n    <strong>#{{ $json.body.leaveRequestId }}</strong>.\n  </p>\n\n  <p>Hành động này sẽ đưa đơn về trạng thái <strong>\"Chờ duyệt\"</strong> để có thể chỉnh sửa lại.</p>\n\n  <p>Vui lòng nhấn vào nút bên dưới để xác nhận việc thu hồi đơn:</p>\n\n  <div style=\"margin-top: 25px; text-align: center;\">\n    <a href=\"{{ $json.body.processRevocationLink }}\"\n       style=\"display: inline-block; padding: 12px 24px; background-color: #ffc107; color: black; text-decoration: none; border-radius: 5px; font-weight: bold;\">\n      Xác Nhận Thu Hồi\n    </a>\n  </div>\n</div>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -16,
+        224
+      ],
+      "id": "34ed1fad-34db-48fa-945d-189729c583f0",
+      "name": "Email Revoke Confirmation",
+      "webhookId": "1a781767-a797-4ebe-a93a-81a12b59475c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "etfAm2P8HNit6MF4",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "requestRevocation",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        224
+      ],
+      "id": "02e14ab1-1a0c-43c8-82c3-53e856c4daf5",
+      "name": "Email Revoke Webhook",
+      "webhookId": "4fb3f1c5-94d1-41b5-a7c0-6605725482ac"
+    },
+    {
+      "parameters": {
+        "sendTo": "iot@baoz.vn",
+        "subject": "Đơn xin nghỉ phép",
+        "message": "=<div style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #333;\">\n  <h3 style=\"color: #0056b3;\">Yêu Cầu Duyệt Đơn Xin Nghỉ Phép</h3>\n  <p>Nhân viên <strong>{{ $json.body.employeeName }}</strong> đã gửi một yêu cầu xin nghỉ phép với các thông tin sau:</p>\n\n  <table style=\"width: 100%; border-collapse: collapse; margin: 20px 0;\">\n    <tr>\n      <td style=\"padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9; width: 120px;\"><strong>Loại phép:</strong></td>\n      <td style=\"padding: 8px; border: 1px solid #ddd;\">{{ $json.body.leaveType }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9;\"><strong>Từ ngày:</strong></td>\n      <td style=\"padding: 8px; border: 1px solid #ddd;\">{{ $json.body.fromDate }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9;\"><strong>Đến ngày:</strong></td>\n      <td style=\"padding: 8px; border: 1px solid #ddd;\">{{ $json.body.toDate }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9;\"><strong>Từ giờ:</strong></td>\n      <td style=\"padding: 8px; border: 1px solid #ddd;\">{{ $json.body.fromTime }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9;\"><strong>Đến giờ:</strong></td>\n      <td style=\"padding: 8px; border: 1px solid #ddd;\">{{ $json.body.toTime }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9;\"><strong>Lý do:</strong></td>\n      <td style=\"padding: 8px; border: 1px solid #ddd;\">{{ $json.body.reason }}</td>\n    </tr>\n  </table>\n\n  <p>Vui lòng xem xét và xử lý đơn:</p>\n\n  <div style=\"margin-top: 25px; text-align: center;\">\n    <a href=\"{{ $json.body.approveLink }}\" style=\"display: inline-block; padding: 12px 24px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px; margin-right: 15px; font-weight: bold;\">\n      Duyệt Đơn\n    </a>\n    <a href=\"{{ $json.body.rejectLink }}\" style=\"display: inline-block; padding: 12px 24px; background-color: #dc3545; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;\">\n      Từ Chối\n    </a>\n  </div>\n</div>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -16,
+        0
+      ],
+      "id": "7d2aeea1-9474-48a1-98fd-cf42994b47ba",
+      "name": "Email Approval Request",
+      "webhookId": "1a781767-a797-4ebe-a93a-81a12b59475c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "etfAm2P8HNit6MF4",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "sendApproval",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        0
+      ],
+      "id": "e065725f-9435-4bc1-8792-46e4766cbc58",
+      "name": "Get Send Approval Webhook",
+      "webhookId": "4fb3f1c5-94d1-41b5-a7c0-6605725482ac"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "subscriptionUpdate",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        736
+      ],
+      "id": "08ab768b-cb3d-4b9b-aa95-b651910d4a12",
+      "name": "Get Send Approval Subscription",
+      "webhookId": "4fb3f1c5-94d1-41b5-a7c0-6605725482ac"
+    },
+    {
+      "parameters": {
+        "sendTo": "iot@baoz.vn",
+        "subject": "Thông báo gói dịch vụ",
+        "message": "=<div style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #333;\">\n  <h3>Xin chào,</h3>\n  <p>Hệ thống ghi nhận một thay đổi về gói dịch vụ:</p>\n  <ul>\n    <li><strong>Hành động:</strong> {{ $json.body.eventType === 'CREATE' ? 'Thêm mới' : 'Cập nhật' }}</li>\n    <li><strong>Tên Dịch Vụ:</strong> {{ $json.body.serviceName }}</li>\n    <li><strong>Nhà Cung Cấp:</strong> {{ $json.body.provider }}</li>\n    <li><strong>Ngày Hết Hạn:</strong> {{ $json.body.expiryDate }}</li>\n    <li><strong>Thời gian còn lại:</strong> {{ $json.body.daysRemaining }} ngày</li>\n    <li><strong>Thực hiện bởi:</strong> {{ $json.body.triggeredBy }}</li>\n  </ul>\n  <p><em>Đây là email tự động từ hệ thống quản lý.</em></p>\n</div>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        208,
+        448
+      ],
+      "id": "a6eabee4-62e3-47dd-81e4-457e2bf17bea",
+      "name": "Email Approval Request Subscription",
+      "webhookId": "1a781767-a797-4ebe-a93a-81a12b59475c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "etfAm2P8HNit6MF4",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.eventType.trim() }}",
+                    "rightValue": "EXPIRING_SOON",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "24a62d9e-da79-4792-9c8d-957f24f4b744"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "=Sắp hết hạn"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -16,
+        736
+      ],
+      "id": "254ddcf0-1e80-4475-b128-f5902c3df30f",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "sendTo": "iot@baoz.vn",
+        "subject": "[CẢNH BÁO] Dịch vụ {{ $json.body.serviceName }} sắp hết hạn!",
+        "message": "=<div style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #c0392b;\">\n    <h3 style=\"color: #c0392b;\">Cảnh Báo Gia Hạn Dịch Vụ</h3>\n    <p>\n        Dịch vụ <strong>{{ $json.body.serviceName }}</strong> sẽ hết hạn trong \n        <strong>{{ $json.body.daysRemaining }} ngày</strong> nữa.\n    </p>\n    <p>\n        <strong>Ngày hết hạn:</strong> {{ $json.body.expiryDate }}\n    </p>\n    <p>Vui lòng tiến hành gia hạn sớm để đảm bảo dịch vụ không bị gián đoạn.</p>\n    <p><em>Email được gửi tự động bởi hệ thống giám sát.</em></p>\n</div>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        208,
+        640
+      ],
+      "id": "ffd781bc-3cbb-43f3-b781-115ca171afc6",
+      "name": "Email Approval Request Subscription EXPIRING SOON",
+      "webhookId": "1a781767-a797-4ebe-a93a-81a12b59475c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "etfAm2P8HNit6MF4",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "=-4833884053",
+        "text": "=*📣 [CẢNH BÁO DỊCH VỤ]*\n\nDịch vụ: `{{ $json.body.serviceName }}`\nNhà cung cấp: `{{ $json.body.provider }}`\n\n⏳ Sẽ hết hạn trong: *{{ $json.body.daysRemaining }} ngày*\n🗓️ Ngày hết hạn: *{{ $json.body.expiryDate }}*",
+        "additionalFields": {
+          "parse_mode": "MarkdownV2"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        832
+      ],
+      "id": "b9b8be1e-1e8c-4a32-aced-9665b90e2435",
+      "name": "Send a text message",
+      "webhookId": "080319e0-a670-42d4-8da0-f5a5bbabc295",
+      "credentials": {
+        "telegramApi": {
+          "id": "znzNaqedmvTab4oa",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Email Revoke Webhook": {
+      "main": [
+        [
+          {
+            "node": "Email Revoke Confirmation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Send Approval Webhook": {
+      "main": [
+        [
+          {
+            "node": "Email Approval Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Send Approval Subscription": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Email Approval Request Subscription EXPIRING SOON",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Email Approval Request Subscription",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Approval Request Subscription EXPIRING SOON": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "8cbde2e5-e394-4882-b862-e8cfe69d224d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "33b4dfdd72984394e10a4ce8a038f9c0ea654ccbfddb624fe7aae35ae3f75516"
+  },
+  "id": "4IeOdEFIOctb756Y",
+  "tags": [
+    {
+      "createdAt": "2025-08-19T06:40:34.581Z",
+      "updatedAt": "2025-08-19T06:40:34.581Z",
+      "id": "HJeLA2gwzC2mlEgM",
+      "name": "CRM"
+    }
+  ]
+}
