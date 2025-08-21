@@ -1,9 +1,6 @@
 # File môi trường chứa mật khẩu và thông tin nhạy cảm
 .env
 
-# File đóng gói các image, rất lớn, không nên đưa lên Git
-all_images.tar
-
 # Bỏ qua thư mục build của .NET
 [Bb]in/
 [Oo]bj/
@@ -15,6 +12,10 @@ UserDashboard/build/
 
 # Thư mục node_modules của dự án React
 **/node_modules
+
+# Thư mục images
+**/images
+
 
 # Các file do Rider/VS Code/Visual Studio tạo ra
 .idea/
