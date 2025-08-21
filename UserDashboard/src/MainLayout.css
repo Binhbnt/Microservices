@@ -1,0 +1,52 @@
+/* src/MainLayout.css */
+
+.main-layout {
+  display: flex;
+  height: 100vh;
+  overflow: visible; 
+  z-index: 1;
+}
+
+.main-content {
+  padding: 24px;
+  padding-left: calc(var(--sidebar-width) + 24px); /* 24px là padding thật */
+  width: 100%;
+}
+
+
+/* Khi sidebar thu gọn */
+.main-layout.sidebar-collapsed .main-content {
+  padding-left: calc(var(--sidebar-collapsed-width) + 24px);
+}
+
+/* === CSS MỚI CHO NÚT TOGGLE === */
+.sidebar-toggle-btn {
+  position: fixed; /* Cố định vị trí trên màn hình */
+  top: 24px;       /* Căn theo chiều dọc bạn muốn */
+  
+  /* Vị trí khi sidebar mở rộng */
+  left: 260px;     
+  
+  transform: translateX(-50%); /* Căn nút vào giữa đường biên */
+  z-index: 1050; /* Nằm trên tất cả */
+  
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+  color: #333;
+
+  /* Hiệu ứng chuyển động cho nút */
+  transition: left 0.3s ease;
+}
+
+/* Vị trí của nút khi sidebar thu gọn */
+.main-layout.sidebar-collapsed .sidebar-toggle-btn {
+  left: 80px;
+}

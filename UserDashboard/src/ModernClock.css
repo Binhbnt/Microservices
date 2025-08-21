@@ -1,0 +1,28 @@
+/* Dùng Google Font để có chữ đẹp hơn */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&display=swap');
+
+.modern-clock {
+  font-family: 'Roboto Mono', monospace;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  background: linear-gradient(45deg, #4e54c8, #8f94fb); /* Gradient Tím-Xanh */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.time-display {
+  font-size: 2.2rem; /* Cỡ chữ to cho giờ */
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+}
+
+.date-display {
+  font-size: 0.9rem;
+  font-weight: 300;
+  opacity: 0.8;
+  text-transform: capitalize;
+  margin-top: 5px;
+}

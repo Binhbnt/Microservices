@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hướng Dẫn Sử Dụng - Hệ Thống Quản Lý Nhân Sự & Nghỉ Phép (User)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="images/Satori.webp" />
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+    h3, h4 {
+        font-weight: 600;
+    }
+    .guide-section ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .guide-section li {
+        margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div class="min-h-screen flex flex-col">
+
+    <nav id="main-nav" class="fixed top-0 w-full z-50 bg-gray-50/80 backdrop-blur-md shadow-sm transition-all duration-300 ease-in-out">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-center h-16">
+          <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="images/Satori.webp" alt="Satori Logo" class="h-8">
+            <span class="text-2xl font-bold text-blue-600 self-center whitespace-nowrap">SATORI</span>
+          </a>
+          <div class="hidden md:flex items-center space-x-6 text-sm font-semibold">
+            <a href="#dashboard" class="text-gray-700 hover:text-blue-600">Dashboard</a>
+            <a href="#leave-management" class="text-gray-700 hover:text-blue-600">Đơn nghỉ phép</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex-grow">
+
+      <section class="bg-gradient-to-br from-blue-600 to-indigo-700 text-white pt-32 pb-20 px-6 text-center" data-aos="zoom-in">
+        <div class="max-w-4xl mx-auto">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Hướng Dẫn Sử Dụng</h1>
+          <p class="text-white/80 text-lg">Tài liệu này cung cấp hướng dẫn về các tính năng dành cho tài khoản nhân viên.</p>
+        </div>
+      </section>
+
+      <div class="py-16 px-6 bg-gray-100">
+        <div class="max-w-5xl mx-auto space-y-16">
+
+          <section id="login" class="guide-section" data-aos="fade-up">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-600 pl-4">1. Các Chức Năng Cơ Bản</h2>
+            <h3 class="text-xl text-gray-700 mt-4 mb-2">Đăng nhập & Menu tài khoản</h3>
+            <p>Sử dụng <strong>Mã số nhân viên</strong> và <strong>Mật khẩu</strong> để truy cập. Sau khi đăng nhập, menu ở góc trên bên phải cho phép truy cập nhanh các tính năng:</p>
+            <ul>
+                <li><strong>Thông tin tài khoản:</strong> Xem và chỉnh sửa thông tin cá nhân của bạn.</li>
+                <li><strong>Đổi mật khẩu:</strong> Thay đổi mật khẩu đăng nhập của bạn.</li>
+                <li><strong>Đăng xuất:</strong> Thoát khỏi phiên làm việc.</li>
+            </ul>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <img src="images/login.webp" loading="lazy" alt="Giao diện đăng nhập hệ thống" class="rounded-lg shadow-lg mx-auto">
+                <img src="images/user_menu.webp" loading="lazy" alt="Menu tài khoản người dùng" class="rounded-lg shadow-lg mx-auto">
+            </div>
+
+            <h3 class="text-xl text-gray-700 mt-8 mb-2">Trang thông tin tài khoản & Đổi mật khẩu</h3>
+            <p>Bạn có thể truy cập trang <strong>Thông tin tài khoản</strong> của mình để xem các thông tin như Mã NV, Chức vụ, Bộ phận và thay đổi ảnh đại diện. Tại đây, bạn có thể nhấn <strong>"Chỉnh sửa"</strong> để cập nhật thông tin hoặc <strong>"Đổi mật khẩu"</strong>.</p>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <img src="images/profile_user.webp" loading="lazy" alt="Trang thông tin tài khoản cá nhân" class="rounded-lg shadow-lg mx-auto">
+                <img src="images/user_password.webp" loading="lazy" alt="Trang đổi mật khẩu" class="rounded-lg shadow-lg mx-auto">
+            </div>
+          </section>
+
+          <hr class="border-gray-300">
+
+          <section id="dashboard" class="guide-section" data-aos="fade-up">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-600 pl-4">2. Màn Hình Chính (Dashboard)</h2>
+            <p>Đây là trang tổng quan, cung cấp cái nhìn về tình hình nghỉ phép và đơn từ của chính bạn.</p>
+            <ul>
+                <li><strong>Thống kê ngày phép:</strong> Các thẻ số liệu hiển thị tổng số ngày phép được hưởng, đã nghỉ và còn lại của **bạn** trong năm.</li>
+                <li><strong>Tổng quan Đơn từ:</strong> Thống kê nhanh số lượng đơn của bạn theo từng trạng thái (Chờ duyệt, Đã duyệt, Từ chối, Đã hủy).</li>
+                <li><strong>Truy cập nhanh:</strong> Xem nhanh danh sách các đơn đang chờ duyệt, các đơn vừa được duyệt hoặc vừa bị từ chối/hủy của bạn.</li>
+             </ul>
+            <img src="images/dashboard_main.webp" loading="lazy" alt="Giao diện dashboard của quản trị viên" class="rounded-lg shadow-lg my-6 mx-auto w-full">
+          </section>
+
+          <hr class="border-gray-300">
+
+          <section id="leave-management" class="guide-section" data-aos="fade-up">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-600 pl-4">3. Quản Lý Đơn Nghỉ Phép</h2>
+            <p>Tại đây, bạn có thể xem và quản lý tất cả các đơn xin nghỉ phép của mình.</p>
+             <ul>
+                <li><strong>Tạo đơn mới:</strong> Nhấn nút <strong>"+ Tạo đơn mới"</strong> để điền thông tin và gửi đơn xin nghỉ phép.</li>
+                <li><strong>Theo dõi trạng thái:</strong> Xem trạng thái các đơn đã gửi (Chờ duyệt, Đã duyệt, Bị từ chối...).</li>
+                <li><strong>Lọc & Tìm kiếm:</strong> Sử dụng bộ lọc trạng thái và ô tìm kiếm để nhanh chóng tìm thấy đơn của bạn.</li>
+             </ul>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <img src="images/leave_management_lis.webp" loading="lazy" alt="Danh sách quản lý đơn xin phép" class="rounded-lg shadow-lg mx-auto">
+                <img src="images/leave_filter_status.webp" loading="lazy" alt="Bộ lọc đơn theo trạng thái" class="rounded-lg shadow-lg mx-auto">
+             </div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-gray-800 text-center py-6 text-sm text-gray-400">
+        © 2025 Satori Company by BinhBNT. All rights reserved.
+    </footer>
+
+    <button id="scrollToTopBtn" class="hidden fixed bottom-6 right-6 z-50 bg-blue-600 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg hover:bg-blue-700 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true
+      });
+      const scrollBtn = document.getElementById("scrollToTopBtn");
+      const mainNav = document.getElementById('main-nav');
+      window.addEventListener("scroll", () => {
+        scrollBtn.classList.toggle("hidden", window.scrollY <= 300);
+        if (window.scrollY > 10) {
+          mainNav.classList.add('bg-white/80', 'shadow-sm');
+        } else {
+          mainNav.classList.remove('bg-white/80', 'shadow-sm');
+        }
+      });
+      scrollBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+  </div>
+</body>
+</html>

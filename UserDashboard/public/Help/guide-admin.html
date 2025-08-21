@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hướng Dẫn Sử Dụng - Hệ Thống Quản Lý (Admin)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="images/Satori.webp" />
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        html, body {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        h3, h4 {
+            font-weight: 600;
+        }
+        .guide-section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .guide-section li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="min-h-screen flex flex-col">
+
+        <nav id="main-nav" class="fixed top-0 w-full z-50 bg-gray-50/80 backdrop-blur-md shadow-sm transition-all duration-300 ease-in-out">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex justify-between items-center h-16">
+                    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="images/Satori.webp" alt="Satori Logo" class="h-8">
+                        <span class="text-2xl font-bold text-blue-600 self-center whitespace-nowrap">SATORI (Admin)</span>
+                    </a>
+                    <div class="hidden md:flex items-center space-x-6 text-sm font-semibold">
+                        <a href="#dashboard" class="text-gray-700 hover:text-blue-600">Dashboard</a>
+                        <a href="#user-management" class="text-gray-700 hover:text-blue-600">Quản lý Nhân viên</a>
+                        <a href="#leave-management" class="text-gray-700 hover:text-blue-600">Quản lý Đơn phép</a>
+                        <a href="#subscription-management" class="text-gray-700 hover:text-blue-600">Quản lý Gói Dịch vụ</a>
+                        <a href="#other-features" class="text-gray-700 hover:text-blue-600">Tính năng khác</a>
+                        <a href="#changelog" class="text-gray-700 hover:text-blue-600">Changelog</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="flex-grow">
+
+            <section class="bg-gradient-to-br from-blue-600 to-indigo-700 text-white pt-32 pb-20 px-6 text-center" data-aos="zoom-in">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Hướng Dẫn Sử Dụng (Admin)</h1>
+                    <p class="text-white/80 text-lg">Tài liệu này cung cấp toàn bộ hướng dẫn về các tính năng dành cho tài khoản Quản trị viên.</p>
+                </div>
+            </section>
+
+            <div class="py-16 px-6 bg-gray-100">
+                <div class="max-w-5xl mx-auto space-y-16">
+
+                    <section id="login" class="guide-section" data-aos="fade-up">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-600 pl-4">1. Các Chức Năng Chung</h2>
+                        <h3 class="text-xl text-gray-700 mt-4 mb-2">Đăng nhập & Menu tài khoản</h3>
+                        <p>Sử dụng <strong>Mã số nhân viên</strong> và <strong>Mật khẩu</strong> để truy cập. Sau khi đăng nhập, menu ở góc trên bên phải cho phép truy cập nhanh các tính năng:</p>
+                        <ul>
+                            <li><strong>Thông tin tài khoản:</strong> Xem và chỉnh sửa thông tin cá nhân.</li>
+                            <li><strong>Đổi mật khẩu:</strong> Thay đổi mật khẩu đăng nhập.</li>
+                            <li><strong>Nhật ký hệ thống:</strong> (Admin) Xem lại các hoạt động quan trọng trên hệ thống.</li>
+                            <li><strong>Đăng xuất:</strong> Thoát khỏi phiên làm việc.</li>
+                        </ul>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                            <img src="images/login.webp" loading="lazy" alt="Giao diện đăng nhập hệ thống" class="rounded-lg shadow-lg mx-auto">
+                            <img src="images/user_menu.webp" loading="lazy" alt="Menu tài khoản người dùng" class="rounded-lg shadow-lg mx-auto">
+                        </div>
+
+                        <h3 class="text-xl text-gray-700 mt-8 mb-2">Trang thông tin tài khoản & Đổi mật khẩu</h3>
+                        <p>Mọi người dùng đều có thể truy cập trang <strong>Thông tin tài khoản</strong> của mình để xem các thông tin như Mã NV, Chức vụ, Bộ phận. Tại đây, bạn có thể nhấn <strong>"Chỉnh sửa"</strong> để cập nhật thông tin hoặc <strong>"Đổi mật khẩu"</strong>.</p>
+                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                            <img src="images/profile_user.webp" loading="lazy" alt="Trang thông tin tài khoản cá nhân" class="rounded-lg shadow-lg mx-auto">
+                            <img src="images/user_password.webp" loading="lazy" alt="Trang đổi mật khẩu" class="rounded-lg shadow-lg mx-auto">
+                        </div>
+                    </section>
+
+                    <hr class="border-gray-300">
+
+                    <section id="dashboard" class="guide-section" data-aos="fade-up">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-600 pl-4">2. Màn Hình Chính (Dashboard)</h2>
+                        <p>Đây là trang tổng quan, cung cấp cái nhìn toàn cảnh về tình hình nghỉ phép và đơn từ trong toàn công ty.</p>
+                        <ul>
+                            <li><strong>Thống kê ngày phép:</strong> Các thẻ số liệu hiển thị tổng số ngày phép được hưởng, đã nghỉ và còn lại của toàn bộ nhân viên trong năm.</li>
+                            <li><strong>Tổng quan Đơn từ:</strong> Thống kê nhanh số lượng đơn theo từng trạng thái (Chờ duyệt, Đã duyệt, Từ chối, Đã hủy).</li>
+                            <li><strong>Biểu đồ & Truy cập nhanh:</strong> Trực quan hóa dữ liệu và cung cấp lối tắt đến các đơn quan trọng.</li>
+                         </ul>
+                        <img src="images/dashboard_main.webp" loading="lazy" alt="Giao diện dashboard của quản trị viên" class="rounded-lg shadow-lg my-6 mx-auto w-full">
+                    </section>
+
+                    <hr class="border-gray-300">
+
+                    <section id="user-management" class="guide-section" data-aos="fade-up">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-600 pl-4">3. Quản Lý Nhân Viên</h2>
+                        <p>Admin có toàn quyền quản lý tài khoản người dùng trong hệ thống.</p>
+                        <h3 class="text-xl text-gray-700 mt-4 mb-2">Thêm, Sửa, Xóa và Phân quyền</h3>
+                        <ul>
+                            <li><strong>Thêm người dùng:</strong> Nhấn nút <strong>"+ Thêm người dùng"</strong> để mở form nhập thông tin và phân vai trò.</li>
+                            <li><strong>Chỉnh sửa & Xóa:</strong> Sử dụng các nút thao tác ở cuối mỗi hàng để cập nhật hoặc xóa người dùng.</li>
+                            <li><strong>Phân quyền:</strong> Lọc người dùng theo vai trò (Quản trị viên, Quản lý cấp cao, Người dùng).</li>
+                        </ul>
+                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                            <img src="images/user_management_list.webp" loading="lazy" alt="Danh sách quản lý nhân viên" class="rounded-lg shadow-lg mx-auto">
+                            <img src="images/user_add_new_modal.webp" loading="lazy" alt="Form thêm người dùng mới" class="rounded-lg shadow-lg mx-auto">
+                        </div>
+
+                        <h3 class="text-xl text-gray-700 mt-8 mb-2">Thùng rác (Chức năng Admin)</h3>
+                        <p>Khi một tài khoản bị xóa, nó sẽ được chuyển vào <strong>Thùng rác</strong> thay vì xóa vĩnh viễn ngay lập tức. Chỉ Admin mới có thể truy cập khu vực này.</p>
+                        <ul>
+                            <li>Truy cập Thùng rác từ màn hình Quản lý nhân viên.</li>
+                            <li>Tại đây, Admin có thể <strong>khôi phục</strong> lại tài khoản đã xóa hoặc <strong>xóa vĩnh viễn</strong> khỏi hệ thống.</li>
+                        </ul>
+                        <img src="images/recycle_user.webp" loading="lazy" alt="Giao diện thùng rác của quản lý nhân viên" class="rounded-lg shadow-lg my-6 mx-auto w-full">
+                    </section>
+                    
+                    <hr class="border-gray-300">
+
+                    <section id="leave-management" class="guide-section" data-aos="fade-up">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-600 pl-4">4. Quản Lý Đơn Nghỉ Phép</h2>
+                        <p>Là Admin, bạn có thể xem và quản lý tất cả các đơn xin nghỉ phép của toàn bộ công ty.</p>
+                         <ul>
+                            <li><strong>Lọc & Tìm kiếm:</strong> Sử dụng bộ lọc trạng thái và ô tìm kiếm để nhanh chóng tìm thấy đơn cần xử lý.</li>
+                            <li><strong>Xử lý đơn:</strong> Thực hiện các hành động trực tiếp trên danh sách như xem chi tiết, duyệt, từ chối...</li>
+                            <li><strong>Xuất Excel:</strong> Tải về file báo cáo danh sách đơn nghỉ phép đã được lọc.</li>
+                         </ul>
+                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                            <img src="images/leave_management_lis.webp" loading="lazy" alt="Danh sách quản lý đơn xin phép" class="rounded-lg shadow-lg mx-auto">
+                            <img src="images/leave_filter_status.webp" loading="lazy" alt="Bộ lọc đơn theo trạng thái" class="rounded-lg shadow-lg mx-auto">
+                        </div>
+                    </section>
+
+                    <hr class="border-gray-300">
+
+                    <section id="subscription-management" class="guide-section" data-aos="fade-up">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-600 pl-4">5. Quản lý Gói Dịch vụ</h2>
+                        <p>Đây là module hoàn toàn mới, một công cụ không thể thiếu cho việc vận hành. Hệ thống cho phép theo dõi vòng đời của các gói đăng ký (tên miền, hosting, bản quyền phần mềm,...), tự động cảnh báo khi sắp hết hạn.</p>
+                         <ul>
+                            <li><strong>Theo dõi tập trung:</strong> Tất cả các dịch vụ và ngày hết hạn được hiển thị trên một giao diện duy nhất, sắp xếp theo thời gian hết hạn gần nhất.</li>
+                            <li><strong>Cảnh báo tự động:</strong> Hệ thống tự động gửi email và tin nhắn Telegram hàng ngày để cảnh báo về các dịch vụ sắp hết hạn, giúp đảm bảo dịch vụ không bị gián đoạn.</li>
+                            <li><strong>Nhập/Xuất Excel:</strong> Dễ dàng thêm hàng loạt dịch vụ từ file Excel hoặc xuất danh sách hiện tại ra báo cáo.</li>
+                         </ul>
+                         <img src="images/subscription_management.webp" loading="lazy" alt="Giao diện quản lý gói dịch vụ" class="rounded-lg shadow-lg my-6 mx-auto w-full">
+                    </section>
+
+                     <hr class="border-gray-300">
+
+                    <section id="other-features" class="guide-section" data-aos="fade-up">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-600 pl-4">6. Tính Năng Nâng Cao (Admin)</h2>
+                         <h3 class="text-xl text-gray-700 mt-4 mb-2">Nhật ký hệ thống (Audit Log)</h3>
+                         <p>Đây là một công cụ mạnh mẽ dành riêng cho Admin, cho phép theo dõi và truy vết mọi hành động diễn ra trên hệ thống. Mỗi hành động như tạo đơn, duyệt đơn, đăng nhập... đều được ghi lại chi tiết.</p>
+                          <ul>
+                                <li><strong>Người thực hiện:</strong> Ghi lại ID của người dùng đã thực hiện hành động.</li>
+                                <li><strong>Hành động & Đối tượng:</strong> Mô tả rõ hành động (ví dụ: `CREATE_LEAVE_REQUEST`) và đối tượng bị tác động.</li>
+                                <li><strong>Tìm kiếm & Lọc:</strong> Admin có thể tìm kiếm theo ID người dùng hoặc lọc theo loại hành động để phục vụ cho việc kiểm tra, rà soát khi cần thiết.</li>
+                          </ul>
+                        <img src="images/history_system_log.webp" loading="lazy" alt="Giao diện nhật ký hệ thống" class="rounded-lg shadow-lg my-6 mx-auto w-full">
+
+                        <h3 class="text-xl text-gray-700 mt-8 mb-2">Tình trạng hệ thống</h3>
+                         <p>Trang này cho phép Admin theo dõi "sức khỏe" của các dịch vụ (microservices) cấu thành nên hệ thống. Hệ thống tự động kiểm tra và hiển thị trạng thái (Online/Offline/Error) của các dịch vụ liên quan với tần suất làm mới **15 giây/lần**.</p>
+                        <img src="images/system_status.webp" loading="lazy" alt="Giao diện theo dõi tình trạng hệ thống" class="rounded-lg shadow-lg my-6 mx-auto w-full">
+                    </section>
+                    
+                     <hr class="border-gray-300">
+
+                    <section id="changelog" class="guide-section" data-aos="fade-up">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-600 pl-4">7. Tổng kết & Lịch sử thay đổi (Changelog)</h2>
+                        <p class="mb-4">Dưới đây là tóm tắt các tính năng chính và công nghệ đã được triển khai trong hệ thống. Phiên bản: V2.0.0 - 19/08/2025.</p>
+                        
+                        <div class="space-y-8">
+                          <div>
+                              <h3 class="text-xl text-gray-700 mb-3">Kiến trúc & Hạ tầng</h3>
+                              <ul>
+                                  <li><strong>Kiến trúc Microservice:</strong> Hệ thống được xây dựng dựa trên 5 service backend độc lập và 1 service frontend, quản lý bởi <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Docker</span>.</li>
+                                  <li><strong>Chuyển đổi CSDL:</strong> Tự động di dời dữ liệu từ <span class="inline-block bg-gray-100 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">SQLite</span> sang <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">PostgreSQL</span> khi khởi động.</li>
+                                  <li><strong>Giám sát sức khỏe:</strong> API Gateway tự động kiểm tra tình trạng của các service con mỗi 15 giây.</li>
+                              </ul>
+                          </div>
+
+                          <div>
+                              <h3 class="text-xl text-gray-700 mb-3">Xác thực & Phân quyền</h3>
+                              <ul>
+                                  <li><strong>Xác thực JWT:</strong> Hệ thống sử dụng <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">JWT</span> để xác thực người dùng an toàn.</li>
+                                  <li><strong>Quản lý phiên làm việc:</strong> Token có thời hạn 8 giờ và có cơ chế gia hạn phiên.</li>
+                                  <li><strong>Phân quyền theo vai trò:</strong> Hỗ trợ 3 cấp độ: <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Admin</span>, <span class="inline-block bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">SuperUser</span>, và <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">User</span>.</li>
+                              </ul>
+                          </div>
+
+                          <div>
+                              <h3 class="text-xl text-gray-700 mb-3">Tính năng Chính</h3>
+                                <ul>
+                                  <li><strong>Quản lý Nhân viên:</strong> Hỗ trợ đầy đủ các thao tác CRUD (Thêm, Sửa, Xóa mềm), tìm kiếm, lọc, quản lý thùng rác và khôi phục tài khoản.</li>
+                                  <li><strong>Quản lý Đơn xin phép:</strong> Người dùng có thể tạo và quản lý đơn. Cấp quản lý có thể xem và duyệt đơn.</li>
+                                  <li><strong>Quản lý Gói Dịch vụ:</strong> Theo dõi vòng đời các gói đăng ký (tên miền, hosting,...) và tự động cảnh báo qua Email/Telegram khi sắp hết hạn.</li>
+                                  <li><strong>Hệ thống Thông báo:</strong> Gửi thông báo theo thời gian thực tới đúng đối tượng dựa trên vai trò và bộ phận.</li>
+                                  <li><strong>Nhật ký hệ thống:</strong> Ghi lại mọi hoạt động quan trọng, chỉ Admin có thể xem và truy vết.</li>
+                                  <li><strong>Xuất file Excel:</strong> Cho phép xuất danh sách nhân viên và đơn xin phép ra file Excel, có áp dụng bộ lọc.</li>
+                                </ul>
+                          </div>
+                          
+                           <div>
+                              <h3 class="text-xl text-gray-700 mb-3">Giao diện Người dùng</h3>
+                                <ul>
+                                  <li><strong>Giao diện web:</strong> Xây dựng bằng <span class="inline-block bg-cyan-100 text-cyan-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">ReactJS</span>, cung cấp trải nghiệm người dùng hiện đại với skeleton loader.</li>
+                                  <li><strong>Hướng dẫn sử dụng (GuideHelp):</strong> Tích hợp sẵn các chỉ dẫn cho từng vai trò người dùng.</li>
+                                </ul>
+                           </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-gray-800 text-center py-6 text-sm text-gray-400">
+            © 2025 Satori Company by BinhBNT. All rights reserved.
+        </footer>
+
+        <button id="scrollToTopBtn" class="hidden fixed bottom-6 right-6 z-50 bg-blue-600 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg hover:bg-blue-700 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+            </svg>
+        </button>
+
+        <script>
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+            const scrollBtn = document.getElementById("scrollToTopBtn");
+            const mainNav = document.getElementById('main-nav');
+            window.addEventListener("scroll", () => {
+                scrollBtn.classList.toggle("hidden", window.scrollY <= 300);
+                if (window.scrollY > 10) {
+                    mainNav.classList.add('bg-white/80', 'shadow-sm');
+                } else {
+                    mainNav.classList.remove('bg-white/80', 'shadow-sm');
+                }
+            });
+            scrollBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+.leave-request-modal {
+  font-family: 'Arial', sans-serif;
+  padding: 24px;
+  background-color: white;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+.modal-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-logo {
+  height: 40px;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.header-doc-info {
+  text-align: right;
+  font-size: 14px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.logo {
+  height: 50px;
+}
+
+.title-area {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.title-area h3 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.doc-code {
+  font-size: 12px;
+  color: #333;
+}
+
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.info-section p {
+  flex: 1 1 45%;
+  margin: 0;
+}
+
+.section-title {
+  margin: 16px 0 8px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.leave-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.leave-table th,
+.leave-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.handover-section {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.badge-success {
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.watermark-approved {
+  position: absolute;
+  font-size: 48px;
+  color: rgba(255, 0, 0, 0.2);
+  font-weight: bold;
+  transform: rotate(-30deg);
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  pointer-events: none;
+  user-select: none;
+}
+
+.signatures {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 32px;
+}
+
+.signature-name {
+  margin-top: 40px;
+  font-weight: bold;
+}
+
+.modal-footer {
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid #ccc;
+}
+
+/* Đảm bảo modal không bị dính sát mép trái khi có sidebar */
+.ReactModal__Overlay {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.leave-request-modal {
+  width: 100%;
+  max-width: 1000px;
+  background-color: white;
+  padding: 24px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+/* LeaveRequestViewModal.css */
+.modal-body p strong {
+  display: inline-block;
+  min-width: 160px;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

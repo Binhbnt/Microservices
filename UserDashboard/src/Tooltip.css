@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+.tooltip-container {
+  font-family: 'Inter', sans-serif;
+  position: fixed;
+  padding: 10px 14px;
+  background: linear-gradient(145deg, #0066d6, #0099ff);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  z-index: 9999; /* Luôn nổi trên cùng */
+  pointer-events: none; /* Để chuột có thể xuyên qua */
+  white-space: nowrap;
+  transition: opacity 0.25s, transform 0.25s ease;;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
